@@ -1,0 +1,11 @@
+{
+  "name": "simple_calculator_part2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine"
+  },
+  "author": "Kurtlin Hendricks",
+  "license": "ISC"
+}
