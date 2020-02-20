@@ -1,47 +1,63 @@
-// const fs = require("fs")
-let array = [],
-LAST = 0 
-
+//Author : Romeo and Kurtlin
+'use strict';
+​
 class Calculator {
-    constructor() {
-    }
-
-    add() {
-      let result = 0;   
-      for (let i = 0; i < arguments.length; i++) {             
-        result += arguments[i];
-      }
-      array.push(result)
-      return result;
-    }
-
-    multiply(){
-        let sum = 1
-        for(let i = 0; i < arguments.length; i++){
-            sum *= arguments[i]
-        }
-        array.push(sum)
-        return sum
-    }
-
-    last(){
-        LAST = array[array.length - 1 ]
-        return  LAST
-    }
-    set_slot(num1){
-        
-
-    }
-    get_slot(){
-        return
-    }
-
-
-
+  constructor() {
+    this.lastNum = 0;
+    this.slot = [];
   }
-  let calculator_instance = new Calculator();
   
-  console.log(calculator_instance.add(1,2))  //3
-  console.log(calculator_instance.last(), "the last results ") // 3
-  console.log(calculator_instance.add(LAST, 3, "should get 6"));
+  add(...args) {
+    let sum = 0;
+    
+    for (let num of args) {
+      if (num == 'Last') {
+        num = this.last();
+      } else if (num == 'slot_' + num.toString().charAt(num.length - 1)) {
+        sum += this.get_slot(num.charAt(num.length - 1));
+      } else if (!isNaN(num)) {
+        sum += num;
+      }
+    }
+​
+    this.lastNum = sum;
+    this.slot.push(sum);
+​
+    return sum;
+  }
+​
+  multiply(...args) {
+    let product = 1;
+​
+    for (let num of args) {
+      if (num == 'Last') {
+        num = this.last();
+      } else if (num == 'slot_' + num.toString().charAt(num.length - 1)) {
+        product *= this.get_slot(num.charAt(num.length - 1));
+      } else if (!isNaN(num)) {
+        product *= num;
+      }
+    }
+    this.lastNum = product;
+    this.slot.push(product);
+​
+    return product;
+  }
+​
+  // Don't modify any code below this one. You are done with this part
+​
+  last() {
+    return this.lastNum;
+  }
+​
+  set_slot(num) {
+    this.lastNum = this.slot[num - 1];
+  }
+​
+  get_slot(num) {
+    return this.slot[num - 1];
+  }
+}
+​
+module.exports = Calculator;
   
