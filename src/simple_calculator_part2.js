@@ -13,14 +13,14 @@ class Calculator {
     for (let num of args) {
       if (num == 'Last') {
         num = this.last();
-      } else if (num == 'slot_' + num.toString().charAt(num.length - 1)) {
+      }else if (num == 'slot_' + num.toString().charAt(num.length - 1)) {
         sum += this.get_slot(num.charAt(num.length - 1));
       } else if (!isNaN(num)) {
         sum += num;
       }
-    }
+    } 
 ​
-    this.lastNum = sum;
+    
     this.slot.push(sum);
 ​
     return sum;
@@ -38,7 +38,7 @@ class Calculator {
         product *= num;
       }
     }
-    this.lastNum = product;
+    
     this.slot.push(product);
 ​
     return product;

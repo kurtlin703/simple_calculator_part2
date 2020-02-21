@@ -1,8 +1,11 @@
+let Calculator = require("../src/simple_calculator_part2");
+let calculator_instance = new Calculator();
+
 describe("calculate the total", function() {
-  beforeEach(() => {
-    global.Calculator = require("../src/simple_calculator_part2");
-    global.calculator_instance = new Calculator();
-  });
+  // beforeEach(() => {
+  //   global.Calculator = require("../src/simple_calculator_part2");
+    
+  // });
   it("Checks if add() is defined", function() {
     expect(calculator_instance.add()).toBeDefined();
   });
